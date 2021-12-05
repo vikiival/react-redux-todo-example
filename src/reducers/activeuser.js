@@ -1,12 +1,12 @@
 const activeUser = (state = null, action) => {
   switch (action.type) {
-    case "USER_LOGOUT":
+    case 'USER_LOGOUT':
       return null;
 
-    case "USER_LOGIN":
+    case 'USER_LOGIN':
       return action.user;
 
-    case "ADD_TODO":
+    case 'ADD_TODO':
       return {
         ...state,
         todos: [
@@ -14,27 +14,27 @@ const activeUser = (state = null, action) => {
           {
             text: action.text,
             id: action.id,
-            completed: false
-          }
-        ]
+            completed: false,
+          },
+        ],
       };
 
-    case "SET_TODO":
+    case 'SET_TODO':
       return {
         ...state,
         todos: state.todos.map(
           todo =>
             todo.id === action.id
               ? { ...todo, completed: !todo.completed }
-              : todo
-        )
+              : todo,
+        ),
       };
 
-      case "ADD_MEMO":
-        return {
-          ...state,
-          memos: action.memos
-        };
+    case 'ADD_MEMO':
+      return {
+        ...state,
+        memos: action.memos,
+      };
 
     default:
       return state;

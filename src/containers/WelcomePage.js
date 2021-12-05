@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import WelcomePageComponent from '../components/WelcomePage/WelcomePageComponent';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
+import WelcomePageComponent from '../components/WelcomePage/WelcomePageComponent';
 import Register from '../containers/Register';
 
 class WelcomePage extends Component {
@@ -21,18 +22,15 @@ class WelcomePage extends Component {
 
   render() {
     return (
-      <Grid style={{background: "#eee"}} fluid={true}>
+      <Grid style={{ background: '#eee' }} fluid>
         <Row className="show-grid">
-        	<Col md={6} mdPush={6}>
-              <Register />
+          <Col md={6} mdPush={6}>
+            <Register onAdressChange={this.handleAdressChange} />
           </Col>
 
           <Col md={6} mdPull={6}>
-          	<WelcomePageComponent
-          	  onToLoginAdress={this.handleAdressChange}
-            />
+            <WelcomePageComponent onToLoginAdress={this.handleAdressChange} />
           </Col>
-
         </Row>
       </Grid>
     );
@@ -41,8 +39,8 @@ class WelcomePage extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.activeUser
+    user: state.activeUser,
   };
 }
 
-export default connect(mapStateToProps)(WelcomePage);
+export default withRouter(connect(mapStateToProps)(WelcomePage));

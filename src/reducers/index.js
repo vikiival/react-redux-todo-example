@@ -7,6 +7,6 @@ const todoApp = combineReducers({
   visibilityFilter,
   users,
   activeUser,
-})
+});
 
-export default todoApp
+export default todoApp;
